@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyCast 🌤️</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#6a11cb" />
+  </head>
+  <body>
+    <!-- Animation layers -->
+    <div class="cloud-layer" id="cloudLayer1"></div>
+    <div class="cloud-layer" id="cloudLayer2"></div>
+    <div id="rainContainer"></div>
+    <div id="windContainer"></div>
+    <div id="sparkleContainer"></div>
+
+    <div class="day-night-overlay" id="dayNightOverlay"></div>
+
+    <div class="hero">
+      <h1>🌤️ SkyCast</h1>
+      <p>Your interactive weather experience!</p>
+
+      <div class="search-box">
+        <input type="text" id="cityInput" placeholder="Enter city..." />
+        <button onclick="searchCity()">Search</button>
+      </div>
+
+      <div class="loader" id="loader"></div>
+
+      <div class="weather-card">
+        <h2 id="cityName">Loading...</h2>
+        <h1 id="temp">--°C</h1>
+        <p id="condition">---</p>
+      </div>
+
+      <div class="streak-box">🌟 Streak: <span id="streak">0</span> days</div>
+    </div>
+
+    <section class="info-section">
+      <h2>🌍 Live Conditions</h2>
+      <div class="extra">
+        <div>💨 Wind: <span id="wind">--</span></div>
+        <div>🌡️ Feels Like: <span id="feels">--</span></div>
+      </div>
+    </section>
+
+    <section class="forecast-section">
+      <h2>📅 7-Day Forecast</h2>
+      <div id="forecast" class="forecast-cards"></div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About SkyCast</h3>
+          <p>SkyCast delivers live, beautiful weather updates worldwide.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Terms of Use</h3>
+          <p>Weather data is informational only. Accuracy not guaranteed.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Privacy Policy</h3>
+          <p>
+            We do not store personal data. Location is only used to fetch
+            weather.
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 SkyCast. All rights reserved.</p>
+        <p>Produced by <strong>XP Studios</strong></p>
+      </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("service-worker.js");
+      }
+    </script>
+  </body>
+</html>

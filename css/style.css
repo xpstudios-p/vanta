@@ -1,0 +1,294 @@
+/* ===================== BODY ===================== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to bottom, #6a11cb, #2575fc);
+  color: #fff;
+  overflow-x: hidden;
+  transition: all 0.5s ease;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* ===================== DAY/NIGHT OVERLAY ===================== */
+.day-night-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.2);
+  transition: background 1s ease;
+}
+
+/* ===================== ANIMATION LAYERS ===================== */
+.cloud-layer {
+  position: absolute;
+  top: 0;
+  width: 200%;
+  height: 100%;
+  background: url("https://images.unsplash.com/photo-1527766833261-b09c3163a791")
+    repeat-x;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 1;
+}
+#cloudLayer1 {
+  animation: moveClouds 90s linear infinite;
+}
+#cloudLayer2 {
+  animation: moveClouds 140s linear infinite;
+}
+
+@keyframes moveClouds {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.rain-drop {
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  animation: fall linear infinite;
+  z-index: 5;
+}
+@keyframes fall {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.wind-line {
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: windMove linear infinite;
+  z-index: 5;
+}
+@keyframes windMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: sparkleMove linear infinite;
+  z-index: 5;
+}
+@keyframes sparkleMove {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-200px) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* ===================== HERO AREA ===================== */
+.hero {
+  position: relative;
+  z-index: 10;
+  padding: 50px 20px 20px 20px;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* ===================== SEARCH BOX ===================== */
+.search-box {
+  margin-bottom: 30px;
+}
+.search-box input {
+  padding: 12px 15px;
+  border-radius: 25px;
+  border: none;
+  width: 220px;
+  max-width: 80%;
+  font-size: 1rem;
+  outline: none;
+}
+.search-box button {
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #ff6a00;
+  color: white;
+  font-weight: 600;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.search-box button:hover {
+  background: #ff8c42;
+}
+
+/* ===================== LOADER ===================== */
+.loader {
+  display: none;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #ff6a00;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 20px auto;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===================== WEATHER CARD ===================== */
+.weather-card {
+  margin: 20px auto;
+  padding: 25px 20px;
+  max-width: 320px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.weather-card:hover {
+  transform: scale(1.05);
+}
+.weather-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+.weather-card h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+.weather-card p {
+  font-size: 1.2rem;
+}
+
+/* ===================== STREAK BOX ===================== */
+.streak-box {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 15px;
+  border-radius: 20px;
+  display: inline-block;
+  backdrop-filter: blur(6px);
+}
+
+/* ===================== INFO SECTION ===================== */
+.info-section {
+  margin: 50px 0;
+}
+.extra {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  font-size: 1rem;
+}
+
+/* ===================== FORECAST ===================== */
+.forecast-section {
+  margin: 40px 0 80px 0;
+  padding: 0 20px;
+}
+.forecast-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+.forecast-card {
+  padding: 15px;
+  width: 100px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.forecast-card:hover {
+  transform: scale(1.05);
+}
+
+/* ===================== FOOTER ===================== */
+.footer {
+  margin-top: 80px;
+  background: #111;
+  color: #eee;
+  padding: 40px 20px;
+}
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+.footer-section {
+  max-width: 300px;
+}
+.footer-section h3 {
+  color: #ff6a00;
+  margin-bottom: 10px;
+}
+.footer-section p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.85rem;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .weather-card {
+    max-width: 90%;
+  }
+  .forecast-card {
+    width: 80px;
+  }
+}
