@@ -1,11 +1,39 @@
+const CACHE_NAME = "weather-app-v1";
+
+const ASSETS = [
+  "/",
+  "/index.html",
+  "/geo.html",
+  "/style.css",
+  "/script.js",
+  "/manifest.json",
+];
+
+// INSTALL
 self.addEventListener("install", (e) => {
   e.waitUntil(
-    caches.open("vanta").then((cache) => {
-      return cache.addAll(["index.html", "style.css", "app.js"]);
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(ASSETS);
     }),
   );
 });
 
+// ACTIVATE
+self.addEventListener("activate", (e) => {
+  e.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        }),
+      ),
+    ),
+  );
+});
+
+// FETCH (OFFLINE SUPPORT)
 self.addEventListener("fetch", (e) => {
-  e.respondWith(caches.match(e.request).then((res) => res || fetch(e.request)));
+  e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
 });
