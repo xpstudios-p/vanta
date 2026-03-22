@@ -1,9 +1,10 @@
 const CACHE_NAME = "weather-app-v1";
 
 const ASSETS = [
-  "/",
+  "/icons/weather-192.png",
+  "/icons/weather-512.png",
   "/index.html",
-  "/geo.html",
+  "/favicon.ico",
   "/style.css",
   "/script.js",
   "/manifest.json",
